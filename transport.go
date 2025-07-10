@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/getsentry/sentry-go/internal/ratelimit"
+	"github.com/Dzirael/sentry-go/internal/ratelimit"
 )
 
 const (

@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getsentry/sentry-go"
-	sentryecho "github.com/getsentry/sentry-go/echo"
-	"github.com/getsentry/sentry-go/internal/testutils"
+	"github.com/Dzirael/sentry-go"
+	sentryecho "github.com/Dzirael/sentry-go/echo"
+	"github.com/Dzirael/sentry-go/internal/testutils"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/labstack/echo/v4"

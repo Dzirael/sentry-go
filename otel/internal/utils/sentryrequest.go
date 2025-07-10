@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/getsentry/sentry-go"
+	"github.com/Dzirael/sentry-go"
 	"go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.12.0"
 )

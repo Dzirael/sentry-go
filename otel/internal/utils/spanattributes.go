@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/getsentry/sentry-go"
+	"github.com/Dzirael/sentry-go"
 	otelSdkTrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.12.0"
 	otelTrace "go.opentelemetry.io/otel/trace"

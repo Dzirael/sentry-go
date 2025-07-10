@@ -3,8 +3,8 @@ package sentryotel
 import (
 	"context"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/getsentry/sentry-go/internal/otel/baggage"
+	"github.com/Dzirael/sentry-go"
+	"github.com/Dzirael/sentry-go/internal/otel/baggage"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 )

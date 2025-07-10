@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/getsentry/sentry-go/internal/otel/baggage"
+	"github.com/Dzirael/sentry-go/internal/otel/baggage"
 	"github.com/google/go-cmp/cmp"
 )
 

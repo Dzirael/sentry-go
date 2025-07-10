@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getsentry/sentry-go"
+	"github.com/Dzirael/sentry-go"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

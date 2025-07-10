@@ -1108,7 +1108,7 @@ func TestSpanSetContextOverrides(t *testing.T) {
 
 // This test checks that there are no concurrent reads/writes to
 // substructures in scope.contexts.
-// See https://github.com/getsentry/sentry-go/issues/570 for more details.
+// See https://github.com/Dzirael/sentry-go/issues/570 for more details.
 func TestConcurrentContextAccess(_ *testing.T) {
 	ctx := NewTestContext(ClientOptions{
 		EnableTracing:    true,
@@ -1195,7 +1195,7 @@ func TestAdjustingTransactionSourceBeforeSending(t *testing.T) {
 	}
 }
 
-// This is a regression test for https://github.com/getsentry/sentry-go/issues/587
+// This is a regression test for https://github.com/Dzirael/sentry-go/issues/587
 // Without the "spans can be finished only once" fix, this test will fail
 // when run with race detection ("-race").
 func TestSpanFinishConcurrentlyWithoutRaces(_ *testing.T) {

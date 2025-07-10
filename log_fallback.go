@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/getsentry/sentry-go/attribute"
+	"github.com/Dzirael/sentry-go/attribute"
 )
 
 // Fallback, no-op logger if logging is disabled.

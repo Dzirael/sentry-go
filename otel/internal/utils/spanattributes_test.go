@@ -10,8 +10,8 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.12.0"
 	oteltrace "go.opentelemetry.io/otel/trace"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/getsentry/sentry-go/otel/internal/utils"
+	"github.com/Dzirael/sentry-go"
+	"github.com/Dzirael/sentry-go/otel/internal/utils"
 )
 
 func TestParseSpanAttributes(t *testing.T) {

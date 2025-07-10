@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/getsentry/sentry-go"
+	"github.com/Dzirael/sentry-go"
 	"github.com/labstack/echo/v4"
 )
 

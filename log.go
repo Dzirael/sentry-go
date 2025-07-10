@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getsentry/sentry-go/attribute"
+	"github.com/Dzirael/sentry-go/attribute"
 )
 
 type LogLevel string

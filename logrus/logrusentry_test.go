@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/getsentry/sentry-go/internal/testutils"
+	"github.com/Dzirael/sentry-go"
+	"github.com/Dzirael/sentry-go/internal/testutils"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	pkgerr "github.com/pkg/errors"

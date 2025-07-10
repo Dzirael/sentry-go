@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/getsentry/sentry-go"
-	sentryecho "github.com/getsentry/sentry-go/echo"
+	"github.com/Dzirael/sentry-go"
+	sentryecho "github.com/Dzirael/sentry-go/echo"
 	"github.com/labstack/echo/v4"
 )
 

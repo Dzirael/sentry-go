@@ -2,8 +2,8 @@ package utils_test
 
 import (
 	"fmt"
-	"github.com/getsentry/sentry-go"
-	"github.com/getsentry/sentry-go/otel/internal/utils"
+	"github.com/Dzirael/sentry-go"
+	"github.com/Dzirael/sentry-go/otel/internal/utils"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/sdk/trace"

@@ -5,8 +5,8 @@ import (
 	"log"
 	"testing"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/getsentry/sentry-go/internal/testutils"
+	"github.com/Dzirael/sentry-go"
+	"github.com/Dzirael/sentry-go/internal/testutils"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/sdk/resource"
 	otelSdkTrace "go.opentelemetry.io/otel/sdk/trace"

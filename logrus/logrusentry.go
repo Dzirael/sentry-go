@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/getsentry/sentry-go/attribute"
+	"github.com/Dzirael/sentry-go"
+	"github.com/Dzirael/sentry-go/attribute"
 	"github.com/sirupsen/logrus"
 )
 

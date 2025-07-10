@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/getsentry/sentry-go"
+	"github.com/Dzirael/sentry-go"
 	"github.com/valyala/fasthttp"
 )
 

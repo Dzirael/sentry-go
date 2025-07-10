@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/getsentry/sentry-go"
-	sentryzerolog "github.com/getsentry/sentry-go/zerolog"
+	"github.com/Dzirael/sentry-go"
+	sentryzerolog "github.com/Dzirael/sentry-go/zerolog"
 	"github.com/rs/zerolog"
 	"os"
 	"time"
