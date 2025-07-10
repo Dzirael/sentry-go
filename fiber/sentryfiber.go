@@ -9,8 +9,10 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/utils"
+	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/utils/v2"
+
+	// "github.com/gofiber/fiber/v3/utils"
 
 	"github.com/getsentry/sentry-go"
 )
@@ -57,7 +59,7 @@ func New(options Options) fiber.Handler {
 	}).handle
 }
 
-func (h *handler) handle(ctx *fiber.Ctx) error {
+func (h *handler) handle(ctx fiber.Ctx) error {
 	hub := GetHubFromContext(ctx)
 	if hub == nil {
 		hub = sentry.CurrentHub().Clone()
@@ -104,7 +106,7 @@ func (h *handler) handle(ctx *fiber.Ctx) error {
 	return ctx.Next()
 }
 
-func (h *handler) recoverWithSentry(hub *sentry.Hub, ctx *fiber.Ctx) {
+func (h *handler) recoverWithSentry(hub *sentry.Hub, ctx fiber.Ctx) {
 	if err := recover(); err != nil {
 		eventID := hub.RecoverWithContext(
 			context.WithValue(context.Background(), sentry.RequestContextKey, ctx),
@@ -119,28 +121,28 @@ func (h *handler) recoverWithSentry(hub *sentry.Hub, ctx *fiber.Ctx) {
 	}
 }
 
-// GetHubFromContext retrieves the Hub instance from the *fiber.Ctx.
-func GetHubFromContext(ctx *fiber.Ctx) *sentry.Hub {
+// GetHubFromContext retrieves the Hub instance from the fiber.Ctx.
+func GetHubFromContext(ctx fiber.Ctx) *sentry.Hub {
 	if hub, ok := ctx.Locals(valuesKey).(*sentry.Hub); ok {
 		return hub
 	}
 	return nil
 }
 
-// SetHubOnContext sets the Hub instance on the *fiber.Ctx.
-func SetHubOnContext(ctx *fiber.Ctx, hub *sentry.Hub) {
+// SetHubOnContext sets the Hub instance on the fiber.Ctx.
+func SetHubOnContext(ctx fiber.Ctx, hub *sentry.Hub) {
 	ctx.Locals(valuesKey, hub)
 }
 
-// GetSpanFromContext retrieves the Span instance from the *fiber.Ctx.
-func GetSpanFromContext(ctx *fiber.Ctx) *sentry.Span {
+// GetSpanFromContext retrieves the Span instance from the fiber.Ctx.
+func GetSpanFromContext(ctx fiber.Ctx) *sentry.Span {
 	if span, ok := ctx.Locals(transactionKey).(*sentry.Span); ok {
 		return span
 	}
 	return nil
 }
 
-func convert(ctx *fiber.Ctx) *http.Request {
+func convert(ctx fiber.Ctx) *http.Request {
 	defer func() {
 		if err := recover(); err != nil {
 			sentry.DebugLogger.Printf("%v", err)
@@ -174,7 +176,7 @@ func convert(ctx *fiber.Ctx) *http.Request {
 		r.AddCookie(&http.Cookie{Name: string(key), Value: string(value)})
 	})
 
-	r.RemoteAddr = ctx.Context().RemoteAddr().String()
+	r.RemoteAddr = ctx.RequestCtx().RemoteAddr().String()
 
 	r.Body = io.NopCloser(bytes.NewReader(ctx.Request().Body()))
 

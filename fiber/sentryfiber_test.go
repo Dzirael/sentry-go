@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 
 	"github.com/getsentry/sentry-go"
 	sentryfiber "github.com/getsentry/sentry-go/fiber"
@@ -24,7 +24,7 @@ func TestIntegration(t *testing.T) {
 	exception := errors.New("unknown error")
 
 	app := fiber.New(fiber.Config{
-		ErrorHandler: func(c *fiber.Ctx, e error) error {
+		ErrorHandler: func(c fiber.Ctx, e error) error {
 			hub := sentryfiber.GetHubFromContext(c)
 			hub.CaptureException(e)
 			return nil
@@ -33,38 +33,38 @@ func TestIntegration(t *testing.T) {
 
 	app.Use(sentryHandler)
 
-	app.Get("/panic", func(c *fiber.Ctx) error {
+	app.Get("/panic", func(c fiber.Ctx) error {
 		panic("test")
 	})
-	app.Post("/post", func(c *fiber.Ctx) error {
+	app.Post("/post", func(c fiber.Ctx) error {
 		hub := sentryfiber.GetHubFromContext(c)
 		hub.CaptureMessage("post: " + string(c.Body()))
 		return nil
 	})
 
-	app.Get("/get", func(c *fiber.Ctx) error {
+	app.Get("/get", func(c fiber.Ctx) error {
 		hub := sentryfiber.GetHubFromContext(c)
 		hub.CaptureMessage("get")
 		return nil
 	})
 
-	app.Get("/get/:id", func(c *fiber.Ctx) error {
+	app.Get("/get/:id", func(c fiber.Ctx) error {
 		hub := sentryfiber.GetHubFromContext(c)
 		hub.CaptureMessage(fmt.Sprintf("get: %s", c.Params("id")))
 		return nil
 	})
 
-	app.Post("/post/large", func(c *fiber.Ctx) error {
+	app.Post("/post/large", func(c fiber.Ctx) error {
 		hub := sentryfiber.GetHubFromContext(c)
 		hub.CaptureMessage(fmt.Sprintf("post: %d KB", len(c.Body())/1024))
 		return nil
 	})
-	app.Post("/post/body-ignored", func(c *fiber.Ctx) error {
+	app.Post("/post/body-ignored", func(c fiber.Ctx) error {
 		hub := sentryfiber.GetHubFromContext(c)
 		hub.CaptureMessage("body ignored")
 		return nil
 	})
-	app.Post("/post/error-handler", func(c *fiber.Ctx) error {
+	app.Post("/post/error-handler", func(c fiber.Ctx) error {
 		return exception
 	})
 
@@ -531,7 +531,7 @@ func TestHandlers(t *testing.T) {
 				app.Use(sentryHandler)
 			}
 
-			handler := func(ctx *fiber.Ctx) error {
+			handler := func(ctx fiber.Ctx) error {
 				span := sentryfiber.GetSpanFromContext(ctx)
 				if tc.useSentry && span == nil {
 					t.Error("expecting span not to be nil")
@@ -566,7 +566,7 @@ func TestSetHubOnContext(t *testing.T) {
 	app := fiber.New()
 	hub := sentry.NewHub(sentry.CurrentHub().Client(), sentry.NewScope())
 
-	app.Get("/test", func(c *fiber.Ctx) error {
+	app.Get("/test", func(c fiber.Ctx) error {
 		sentryfiber.SetHubOnContext(c, hub)
 		retrievedHub := sentryfiber.GetHubFromContext(c)
 		if retrievedHub == nil {
