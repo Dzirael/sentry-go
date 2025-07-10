@@ -176,7 +176,7 @@ func convert(ctx fiber.Ctx) *http.Request {
 		r.AddCookie(&http.Cookie{Name: string(key), Value: string(value)})
 	})
 
-	r.RemoteAddr = ctx.RequestCtx().RemoteAddr().String()
+	r.RemoteAddr = ctx.Context().RemoteAddr().String()
 
 	r.Body = io.NopCloser(bytes.NewReader(ctx.Request().Body()))
 
